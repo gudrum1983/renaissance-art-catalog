@@ -1,0 +1,12 @@
+:root {
+    --font-family-primary: "Merriweather";
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    --color-text-primary: #343030;
+    --color-text-secondary: #A0A0A0;
+
+    --transition-duration: 300ms;
+}

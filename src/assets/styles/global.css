@@ -1,0 +1,13 @@
+html {
+    font-family: var(--font-family-primary), serif;
+}
+
+body {
+    margin: 0;
+    min-width: 360px;
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-weight: var(--font-weight-regular, 400);
+    font-optical-sizing: auto;
+    font-variant-numeric: oldstyle-nums;
+}
