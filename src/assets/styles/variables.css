@@ -1,12 +1,40 @@
 :root {
     --font-family-primary: "Merriweather";
 
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-bold: 700;
+    --font-h1: 700 24px/1.5 var(--font-family-primary);
+    --font-h2: 400 18px/1.5 var(--font-family-primary);
+    --font-h3: 700 16px/1.5 var(--font-family-primary);
+
+    --font-body-regular: 400 14px/1.5 var(--font-family-primary);
+    --font-body-bold: 700 14px/1.5 var(--font-family-primary);
+    --font-body-light: 300 14px/1.5 var(--font-family-primary);
+    --font-accent-bold: 700 16px/1.5 var(--font-family-primary);
 
     --color-text-primary: #343030;
-    --color-text-secondary: #A0A0A0;
+    --color-text-secondary: #555555;
+    --color-text-muted: #A0A0A0;
+    --color-text-placeholder: #9F9F9F;
+
+    --color-background-primary: #F6F3F3;
+    --color-background-secondary: #ECEAEA;
+
+    --color-border-primary: #E1E1E1;
+    --color-border-secondary: #B5B5B5;
+
+
+    --color-button-background-primary-default: #403432;
+    /*кнопка "купить" другого цвета чем кнопка в ui*/
+    --color-button-background-primary-accent: #382E2B;
+    --color-button-background-primary-hover: #776763;
+    --color-button-background-primary-disable: #C1B4B1;
+
+    --color-button-background-secondary-disable: #5B3A32;
+
+    --color-button-text-primary-default: #F4F6F9;
+    --color-button-text-secondary-default: #FFFFFF;
+
+    --color-border-input-default: var(--color-border-primary);
+    --color-border-input-focus: var(--color-border-secondary);
 
     --transition-duration: 300ms;
 }
