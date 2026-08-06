@@ -16,12 +16,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
-
-interface NavigationItem {
-  label: string;
-  href: string;
-  id: string;
-}
+import { NavigationItem } from "@/shared/types";
 
 type MenuColor = "primary" | "secondary" | "default";
 
@@ -30,7 +25,7 @@ export default Vue.extend({
 
   props: {
     items: {
-      type: Array as PropType<NavigationItem[]>,
+      type: Array as PropType<Array<NavigationItem>>,
       required: true,
     },
 
