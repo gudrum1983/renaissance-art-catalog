@@ -26,6 +26,16 @@
       <ButtonBase color="secondary" full-width>
         По ширине родительского контейнера
       </ButtonBase>
+      <SearchForm
+        :applied-value="searchValue"
+        @submit="handleSearchSubmit"
+        @reset="handleSearchReset"
+      />
+
+      <p>
+        Передано из SearchForm:
+        {{ searchValue || " Значение пока не передано!" }}
+      </p>
     </div>
   </div>
 </template>
@@ -35,13 +45,30 @@ import Vue from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import ButtonBase from "@/components/atoms/ButtonBase.vue";
 import IconCheck from "@/components/atoms/icons/IconCheck.vue";
+import SearchForm from "@/components/organisms/SearchForm.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
+    SearchForm,
     IconCheck,
     HelloWorld,
     ButtonBase,
+  },
+  data() {
+    return {
+      searchValue: "",
+    };
+  },
+
+  methods: {
+    handleSearchSubmit(value: string): void {
+      this.searchValue = value;
+    },
+
+    handleSearchReset(): void {
+      this.searchValue = "";
+    },
   },
 });
 </script>
