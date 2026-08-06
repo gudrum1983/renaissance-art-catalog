@@ -1,83 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript370004 App" />
-    <div
-      style="
-        margin-bottom: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      "
-    >
-      <ButtonBase>Default</ButtonBase>
-      <ButtonBase color="secondary">Secondary</ButtonBase>
-      <ButtonBase color="accent">Accent</ButtonBase>
-      <ButtonBase color="secondary">Длинный текст</ButtonBase>
-      <ButtonBase color="secondary" is-loader>Длинный текст</ButtonBase>
-      <ButtonBase color="secondary" disabled>Длинный текст</ButtonBase>
-      <ButtonBase color="accent">
-        <template v-slot:icon>
-          <IconCheck size="20" />
-        </template>
-        В корзине
-      </ButtonBase>
-      <ButtonBase color="secondary">Купить</ButtonBase>
-      <ButtonBase color="secondary" full-width>
-        По ширине родительского контейнера
-      </ButtonBase>
-      <SearchForm
-        :applied-value="searchValue"
-        @submit="handleSearchSubmit"
-        @reset="handleSearchReset"
-      />
+    <PageHeader
+      :navigation-items="navigationItems"
+      :search-value="searchValue"
+      @search="handleSearch"
+      @reset-search="handleResetSearch"
+    />
 
-      <p>
-        Передано из SearchForm:
-        {{ searchValue || " Значение пока не передано!" }}
-      </p>
-
-      <NavigationMenu :items="navigationItems" />
-    </div>
+    <ButtonBase color="accent">
+      <template v-slot:icon>
+        <IconCheck size="20" />
+      </template>
+      В корзине
+    </ButtonBase>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 import ButtonBase from "@/components/atoms/ButtonBase.vue";
 import IconCheck from "@/components/atoms/icons/IconCheck.vue";
-import SearchForm from "@/components/organisms/SearchForm.vue";
-import NavigationMenu from "@/components/molecules/NavigationMenu.vue";
+import { navigation } from "@/shared/data";
+import PageHeader from "@/components/organisms/PageHeader.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    SearchForm,
+    PageHeader,
     IconCheck,
-    HelloWorld,
     ButtonBase,
-    NavigationMenu,
   },
   data() {
     return {
       searchValue: "",
-      navigationItems: [
-        { id: "catalog", label: "Каталог", href: "#" },
-        { id: "delivery", label: "Доставка", href: "#" },
-        { id: "payment", label: "Оплата", href: "#" },
-        { id: "contacts", label: "Контакты", href: "#" },
-        { id: "about", label: "О компании", href: "#" },
-      ],
+      navigationItems: navigation,
     };
   },
 
   methods: {
-    handleSearchSubmit(value: string): void {
+    handleSearch(value: string): void {
       this.searchValue = value;
     },
 
-    handleSearchReset(): void {
+    handleResetSearch(): void {
       this.searchValue = "";
     },
   },
