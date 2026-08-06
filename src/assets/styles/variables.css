@@ -37,5 +37,5 @@
     --color-border-input-default: var(--color-border-primary);
     --color-border-input-focus: var(--color-border-secondary);
 
-    --transition-duration: 300ms;
+    --transition-base: 350ms ease-in-out;
 }
