@@ -104,6 +104,7 @@ export default Vue.extend({
 
   background: var(--btn-bg);
   color: var(--btn-clr-text);
+  transition: var(--transition-base);
 
   &:hover {
     background: var(--btn-bg-hover);

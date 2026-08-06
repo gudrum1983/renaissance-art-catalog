@@ -36,6 +36,8 @@
         Передано из SearchForm:
         {{ searchValue || " Значение пока не передано!" }}
       </p>
+
+      <NavigationMenu :items="navigationItems" />
     </div>
   </div>
 </template>
@@ -46,6 +48,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import ButtonBase from "@/components/atoms/ButtonBase.vue";
 import IconCheck from "@/components/atoms/icons/IconCheck.vue";
 import SearchForm from "@/components/organisms/SearchForm.vue";
+import NavigationMenu from "@/components/molecules/NavigationMenu.vue";
 
 export default Vue.extend({
   name: "App",
@@ -54,10 +57,18 @@ export default Vue.extend({
     IconCheck,
     HelloWorld,
     ButtonBase,
+    NavigationMenu,
   },
   data() {
     return {
       searchValue: "",
+      navigationItems: [
+        { id: "catalog", label: "Каталог", href: "#" },
+        { id: "delivery", label: "Доставка", href: "#" },
+        { id: "payment", label: "Оплата", href: "#" },
+        { id: "contacts", label: "Контакты", href: "#" },
+        { id: "about", label: "О компании", href: "#" },
+      ],
     };
   },
 
