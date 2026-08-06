@@ -38,4 +38,13 @@
     --color-border-input-focus: var(--color-border-secondary);
 
     --transition-base: 350ms ease-in-out;
+
+    --container-max-width: 1216px;
+    --container-padding: 24px;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --container-padding: 16px;
+    }
 }
