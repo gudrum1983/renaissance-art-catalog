@@ -8,7 +8,7 @@
     --font-body-regular: 400 14px/1.5 var(--font-family-primary);
     --font-body-bold: 700 14px/1.5 var(--font-family-primary);
     --font-body-light: 300 14px/1.5 var(--font-family-primary);
-    --font-accent-bold: 700 16px/1.5 var(--font-family-primary);
+    --font-body-accent-bold: 700 16px/1.5 var(--font-family-primary);
 
     --color-text-primary: #343030;
     --color-text-secondary: #555555;
@@ -21,14 +21,15 @@
     --color-border-primary: #E1E1E1;
     --color-border-secondary: #B5B5B5;
 
-
+    /*заливка кнопки "нормал" в ui*/
     --color-button-background-primary-default: #403432;
-    /*кнопка "купить" другого цвета чем кнопка в ui*/
-    --color-button-background-primary-accent: #382E2B;
-    --color-button-background-primary-hover: #776763;
-    --color-button-background-primary-disable: #C1B4B1;
+    /*заливка кнопки "купить" в макете*/
+    --color-button-background-secondary-default: #382E2B;
+    /*заливка кнопки "найти" в ui*/
+    --color-button-background-accent-default: #5B3A32;
 
-    --color-button-background-secondary-disable: #5B3A32;
+    --color-button-background-primary-hover: #776763;
+    --color-button-background-primary-disabled: #C1B4B1;
 
     --color-button-text-primary-default: #F4F6F9;
     --color-button-text-secondary-default: #FFFFFF;
