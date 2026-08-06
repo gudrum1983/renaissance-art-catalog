@@ -31,7 +31,7 @@ type ButtonColor = "primary" | "secondary" | "accent";
 type ButtonType = "button" | "submit" | "reset";
 
 export default Vue.extend({
-  name: "button-base",
+  name: "ButtonBase",
 
   props: {
     color: {
