@@ -72,8 +72,8 @@ export default Vue.extend({
   --color-border: var(--color-border-input-default);
   --color-placeholder: var(--color-text-placeholder);
 
-  width: fit-content;
-  min-width: 416px;
+  width: 416px;
+  max-width: 100%;
   display: flex;
 }
 
@@ -97,5 +97,16 @@ export default Vue.extend({
 }
 .search-input__button {
   max-width: 122px;
+}
+
+@media (max-width: 480px) {
+  .search-input__field {
+    min-width: 0;
+    padding-inline: 12px;
+  }
+
+  .search-input__button {
+    min-width: 96px;
+  }
 }
 </style>

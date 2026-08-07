@@ -5,6 +5,7 @@
         <NavigationMenu :items="navigationItems" />
 
         <SearchForm
+          class="page-header__search"
           :applied-value="searchValue"
           @submit="$emit('search', $event)"
           @reset="$emit('reset-search')"
@@ -60,6 +61,7 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   color: var(--color-text-primary);
+  padding-block: 20px;
 }
 
 .page-header__content {
@@ -69,5 +71,24 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 1260px) {
+  .page-header {
+    --header-container-left-padding: 0;
+    --header-container-right-padding: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .page-header__content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .page-header__search {
+    width: min(416px, 100%);
+  }
 }
 </style>
