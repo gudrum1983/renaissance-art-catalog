@@ -1,24 +1,79 @@
-# renaissance-art-catalog
+# Renaissance Art Catalog
 
-## Project setup
+Каталог картин эпохи Возрождения с поиском, подробным описанием работ, галереей изображений и сохранением состояния корзины в `localStorage`.
+
+## Демо
+
+Проект опубликован на GitHub Pages:
+
+https://gudrum1983.github.io/renaissance-art-catalog/
+
+## Требования
+
+- Node.js 16
+- npm
+
+Версия Node.js зафиксирована в файле `.nvmrc`. При использовании `nvm` переключиться на неё можно командой:
+
+```bash
+nvm use
 ```
+
+Если Node.js 16 ещё не установлена:
+
+```bash
+nvm install
+```
+
+## Установка и запуск
+
+Установить зависимости:
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+Запустить проект в режиме разработки с автоматическим обновлением:
+
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+После запуска адрес локального сервера будет указан в терминале. По умолчанию приложение доступно по адресу `http://localhost:8080/`.
+
+## Production-сборка
+
+Собрать оптимизированную версию проекта:
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
+Результат сборки будет сохранён в директории `dist`.
+
+Для локального просмотра собранного проекта:
+
+```bash
+npm run preview
 ```
+
+## Проверка кода
+
+Запустить ESLint:
+
+```bash
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Деплой
+
+Деплой настроен через GitHub Actions в `.github/workflows/webpack.yml`.
+
+При отправке изменений в ветку `main` workflow автоматически:
+
+1. Устанавливает Node.js 16.
+2. Устанавливает зависимости командой `npm ci`.
+3. Собирает проект командой `npm run build`.
+4. Публикует содержимое директории `dist` на GitHub Pages.
+
+Workflow также можно запустить вручную на вкладке **Actions** в GitHub.
