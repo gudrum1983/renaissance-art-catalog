@@ -23,7 +23,7 @@
           </div>
           <div class="product-card__price">{{ price }}</div>
         </div>
-        <ButtonBase color="accent">
+        <ButtonBase color="accent" @click="handleButtonClick">
           <template v-if="isInCart" v-slot:icon>
             <IconCheck size="20" />
           </template>
@@ -35,9 +35,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { PropType } from "vue";
 import ButtonBase from "@/components/atoms/ButtonBase.vue";
 import IconCheck from "@/components/atoms/icons/IconCheck.vue";
+
+type ProductId = string | number;
 
 export default Vue.extend({
   name: "ProductCard",
@@ -45,6 +47,11 @@ export default Vue.extend({
   components: { IconCheck, ButtonBase },
 
   props: {
+    id: {
+      type: [String, Number] as PropType<ProductId>,
+      required: true,
+    },
+
     image: {
       type: String,
       required: true,
@@ -88,6 +95,15 @@ export default Vue.extend({
     soldText: {
       type: String,
       default: "Продано",
+    },
+  },
+
+  methods: {
+    handleButtonClick(): void {
+      this.$emit("toggle-cart", {
+        id: this.id,
+        isInCart: this.isInCart,
+      });
     },
   },
 });
