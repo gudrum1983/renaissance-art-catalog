@@ -79,7 +79,7 @@ export default Vue.extend({
 
 .search-input_focused {
   --color-border: var(--color-border-input-focus);
-  outline: -webkit-focus-ring-color auto 1px;
+  outline: auto;
 }
 
 .search-input__field {
