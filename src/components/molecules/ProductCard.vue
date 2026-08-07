@@ -155,7 +155,8 @@ export default Vue.extend({
 }
 
 .product-card:hover,
-.product-card:focus {
+.product-card:focus,
+.product-card:focus-within {
   cursor: pointer;
   box-shadow: 0 2px 6px var(--color-shadow);
 }
