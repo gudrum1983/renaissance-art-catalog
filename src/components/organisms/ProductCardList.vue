@@ -5,6 +5,7 @@
       :key="product.id"
       v-bind="product"
       @toggle-cart="$emit('toggle-cart', $event)"
+      @open-details="$emit('open-details', $event)"
     />
   </div>
 </template>

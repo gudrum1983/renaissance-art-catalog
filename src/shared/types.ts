@@ -6,11 +6,17 @@ export type NavigationItem = {
 
 export type ProductId = string | number;
 
+export type ProductImage = {
+  src: string;
+};
+
 export type Product = {
   id: ProductId;
   image: string;
   title: string;
   subtitle: string;
+  description: string;
+  images: Array<ProductImage>;
   price?: string;
   oldPrice?: string;
   isDiscount?: boolean;

@@ -68,8 +68,7 @@ export default Vue.extend({
   transition: transform var(--transition-base);
 }
 
-.navigation-menu__link:hover::after,
-.navigation-menu__link:focus-visible::after {
+.navigation-menu__link:hover::after {
   transform: scaleX(1);
 }
 </style>
