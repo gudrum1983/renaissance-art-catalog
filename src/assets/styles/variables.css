@@ -39,8 +39,11 @@
 
     --transition-base: 350ms ease-in-out;
 
-    --container-max-width: 1216px;
+    --container-max-width: 1308px;
     --container-padding: 24px;
+
+    --content-padding: 46px;
+    --content-offset-left: 96px;
 }
 
 @media (max-width: 767px) {
