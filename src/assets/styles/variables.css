@@ -5,6 +5,8 @@
     --font-h2: 400 18px/1.5 var(--font-family-primary);
     --font-h3: 700 16px/1.5 var(--font-family-primary);
 
+    --font-хxl: 700 36px/1 var(--font-family-primary);
+
     --font-body-regular: 400 14px/1.5 var(--font-family-primary);
     --font-body-bold: 700 14px/1.5 var(--font-family-primary);
     --font-body-light: 300 14px/1.5 var(--font-family-primary);
@@ -17,6 +19,9 @@
 
     --color-background-primary: #F6F3F3;
     --color-background-secondary: #ECEAEA;
+    --color-background-overlay: #382E2BB8;
+
+    --color-shadow: #382E2B59;
 
     --color-border-light: #E7E7E7;
     --color-border-primary: #E1E1E1;
@@ -34,6 +39,7 @@
 
     --color-button-text-primary-default: #F4F6F9;
     --color-button-text-secondary-default: #FFFFFF;
+    --color-button-text-secondary-opacity: #FFFFFF59;
 
     --color-border-input-default: var(--color-border-primary);
     --color-border-input-focus: var(--color-border-secondary);

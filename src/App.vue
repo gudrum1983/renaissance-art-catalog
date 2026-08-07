@@ -8,7 +8,11 @@
     />
     <div class="page-content">
       <h1 class="header-page">Картины эпохи Возрождения</h1>
-      <ProductCardList :products="productItems" @toggle-cart="toggleCart" />
+      <ProductCardList
+        :products="productItems"
+        @toggle-cart="toggleCart"
+        @open-details="openProductDetails"
+      />
     </div>
     <PageFooter
       :navigation-items="navigationItems"
@@ -16,21 +20,28 @@
       @search="handleSearch"
       @reset-search="handleResetSearch"
     />
+    <ProductDetailsModal
+      v-if="selectedProduct"
+      :product="selectedProduct"
+      @close="selectedProduct = null"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import { navigation, products } from "@/shared/data";
-import { CartTogglePayload, Product } from "@/shared/types";
+import { CartTogglePayload, Product, ProductId } from "@/shared/types";
 import PageHeader from "@/components/organisms/PageHeader.vue";
 import PageFooter from "@/components/organisms/PageFooter.vue";
 import ProductCardList from "@/components/organisms/ProductCardList.vue";
+import ProductDetailsModal from "@/components/organisms/ProductDetailsModal.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
     ProductCardList,
+    ProductDetailsModal,
     PageHeader,
     PageFooter,
   },
@@ -38,6 +49,7 @@ export default Vue.extend({
     return {
       searchValue: "",
       navigationItems: navigation,
+      selectedProduct: null as Product | null,
       productItems: products.map(
         (product): Product => ({
           ...product,
@@ -61,6 +73,11 @@ export default Vue.extend({
       if (product) {
         product.isInCart = !product.isInCart;
       }
+    },
+
+    openProductDetails(id: ProductId): void {
+      this.selectedProduct =
+        this.productItems.find((product) => product.id === id) || null;
     },
   },
 });
