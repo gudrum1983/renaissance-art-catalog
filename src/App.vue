@@ -24,11 +24,13 @@
       @search="handleSearch"
       @reset-search="handleResetSearch"
     />
-    <ProductDetailsModal
-      v-if="selectedProduct"
-      :product="selectedProduct"
-      @close="selectedProduct = null"
-    />
+    <transition name="modal">
+      <ProductDetailsModal
+        v-if="selectedProduct"
+        :product="selectedProduct"
+        @close="selectedProduct = null"
+      />
+    </transition>
   </div>
 </template>
 
@@ -135,5 +137,34 @@ export default Vue.extend({
 .page-content__empty {
   color: var(--color-text-secondary);
   font: var(--font-h2);
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity var(--transition-base);
+}
+
+.modal-enter-active .product-modal__dialog,
+.modal-leave-active .product-modal__dialog {
+  transition: transform var(--transition-base);
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter .product-modal__dialog,
+.modal-leave-to .product-modal__dialog {
+  transform: translateY(12px) scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-enter-active,
+  .modal-leave-active,
+  .modal-enter-active .product-modal__dialog,
+  .modal-leave-active .product-modal__dialog {
+    transition: none;
+  }
 }
 </style>

@@ -18,11 +18,14 @@
 
       <div class="product-modal__gallery">
         <div class="product-modal__viewport">
-          <img
-            class="product-modal__image"
-            :src="activeImage.src"
-            :alt="`${product.title}, изображение ${activeIndex + 1}`"
-          />
+          <transition name="gallery-image" mode="out-in">
+            <img
+              :key="activeIndex"
+              class="product-modal__image"
+              :src="activeImage.src"
+              :alt="`${product.title}, изображение ${activeIndex + 1}`"
+            />
+          </transition>
         </div>
 
         <div class="product-modal__slide-menu" aria-label="Выбор изображения">
@@ -174,6 +177,16 @@ export default Vue.extend({
   object-fit: cover;
 }
 
+.gallery-image-enter-active,
+.gallery-image-leave-active {
+  transition: opacity var(--transition-base);
+}
+
+.gallery-image-enter,
+.gallery-image-leave-to {
+  opacity: 0;
+}
+
 .product-modal__slide-menu {
   width: 100%;
   display: flex;
@@ -226,6 +239,13 @@ export default Vue.extend({
 .product-modal__price,
 .product-modal__sold {
   font: var(--font-h1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-image-enter-active,
+  .gallery-image-leave-active {
+    transition: none;
+  }
 }
 
 @media (max-width: 767px) {
