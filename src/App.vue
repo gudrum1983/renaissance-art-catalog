@@ -9,10 +9,14 @@
     <div class="page-content">
       <h1 class="header-page">Картины эпохи Возрождения</h1>
       <ProductCardList
-        :products="productItems"
+        v-if="filteredProductItems.length"
+        :products="filteredProductItems"
         @toggle-cart="toggleCart"
         @open-details="openProductDetails"
       />
+      <p v-else class="page-content__empty">
+        По вашему запросу картины не найдены
+      </p>
     </div>
     <PageFooter
       :navigation-items="navigationItems"
@@ -68,6 +72,20 @@ export default Vue.extend({
     };
   },
 
+  computed: {
+    filteredProductItems(): Array<Product> {
+      const query = this.searchValue.trim().toLocaleLowerCase("ru-RU");
+
+      if (!query) return this.productItems;
+
+      return this.productItems.filter((product) =>
+        `${product.title} ${product.subtitle}`
+          .toLocaleLowerCase("ru-RU")
+          .includes(query)
+      );
+    },
+  },
+
   methods: {
     handleSearch(value: string): void {
       this.searchValue = value;
@@ -112,5 +130,10 @@ export default Vue.extend({
   font: var(--font-h1);
   letter-spacing: var(--letter-spacing-tight);
   padding-bottom: 39px;
+}
+
+.page-content__empty {
+  color: var(--color-text-secondary);
+  font: var(--font-h2);
 }
 </style>
