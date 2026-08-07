@@ -148,7 +148,7 @@ export default Vue.extend({
   width: min(960px, 100%);
   max-height: calc(100vh - var(--padding) * 2);
   background: var(--color-background-primary);
-  box-shadow: var(--color-shadow);
+  box-shadow: 0 4px 12px var(--color-shadow);
 }
 
 .product-modal__close {
