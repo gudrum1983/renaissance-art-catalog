@@ -44,6 +44,10 @@
 
     --content-padding: 46px;
     --content-offset-left: 96px;
+
+    --letter-spacing-base: 3%;
+    --letter-spacing-tight: 2.5%;
+    --letter-spacing-wide: 8%;
 }
 
 @media (max-width: 767px) {
