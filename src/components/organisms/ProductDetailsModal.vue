@@ -91,6 +91,7 @@ export default Vue.extend({
       activeIndex: 0,
       titleId: `product-modal-title-${this.product.id}`,
       previousBodyOverflow: "",
+      previousDocumentOverflow: "",
     };
   },
 
@@ -102,12 +103,15 @@ export default Vue.extend({
 
   mounted(): void {
     this.previousBodyOverflow = document.body.style.overflow;
+    this.previousDocumentOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     document.addEventListener("keydown", this.handleKeydown);
   },
 
   beforeDestroy(): void {
     document.body.style.overflow = this.previousBodyOverflow;
+    document.documentElement.style.overflow = this.previousDocumentOverflow;
     document.removeEventListener("keydown", this.handleKeydown);
   },
 
