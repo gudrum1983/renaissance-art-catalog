@@ -104,7 +104,7 @@ export default Vue.extend({
   transition: var(--transition-base);
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background: var(--btn-bg-hover);
   }
 
