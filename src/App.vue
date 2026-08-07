@@ -58,8 +58,6 @@ export default Vue.extend({
 
     toggleCart({ id }: CartTogglePayload): void {
       const product = this.productItems.find((item) => item.id === id);
-      console.log(product);
-      console.log(id);
       if (product) {
         product.isInCart = !product.isInCart;
       }
