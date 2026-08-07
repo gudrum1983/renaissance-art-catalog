@@ -96,7 +96,7 @@ export default Vue.extend({
   width: fit-content;
   min-width: 118px;
   min-height: 48px;
-  padding: 14px 8px;
+  padding: 12px 8px;
   border: 0;
   font: var(--font-body-bold);
 
