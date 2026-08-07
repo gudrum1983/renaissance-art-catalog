@@ -61,6 +61,7 @@ export default Vue.extend({
   color: var(--color-text-secondary);
   display: flex;
   align-items: center;
+  padding-block: 24px;
 }
 
 .page-footer__content {
@@ -85,5 +86,36 @@ export default Vue.extend({
 
 .page-footer__contact_spaced {
   letter-spacing: var(--letter-spacing-wide);
+}
+
+@media (max-width: 1260px) {
+  .page-footer {
+    --footer-container-left-padding: 0;
+    --footer-container-right-padding: 0;
+  }
+
+  .page-footer__contacts {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-footer__content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .page-footer__contacts {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-footer__contacts {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
 }
 </style>

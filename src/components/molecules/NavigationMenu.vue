@@ -71,4 +71,18 @@ export default Vue.extend({
 .navigation-menu__link:hover::after {
   transform: scaleX(1);
 }
+
+@media (max-width: 1260px) {
+  .navigation-menu__list {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navigation-menu__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 24px;
+  }
+}
 </style>
