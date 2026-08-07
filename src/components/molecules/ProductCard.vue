@@ -1,5 +1,12 @@
 <template>
-  <div class="product-card">
+  <div
+    class="product-card"
+    role="button"
+    tabindex="0"
+    @click="$emit('open-details', id)"
+    @keydown.enter.self="$emit('open-details', id)"
+    @keydown.space.self.prevent="$emit('open-details', id)"
+  >
     <img class="product-card__image" :src="image" :alt="title" />
 
     <div class="product-card__bottom-block">
@@ -22,7 +29,7 @@
           v-if="isInCart"
           color="accent"
           :is-loader="isLoading"
-          @click="handleButtonClick"
+          @click.stop="handleButtonClick"
         >
           <template v-slot:icon>
             <IconCheck size="20" />
@@ -33,7 +40,7 @@
           v-else
           color="secondary"
           :is-loader="isLoading"
-          @click="handleButtonClick"
+          @click.stop="handleButtonClick"
         >
           Купить
         </ButtonBase>
@@ -142,6 +149,7 @@ export default Vue.extend({
 .product-card {
   border: 1px solid var(--color-border-primary);
   letter-spacing: 2%;
+  cursor: pointer;
 }
 
 .product-card__image {
