@@ -3,6 +3,7 @@
     class="product-card"
     role="button"
     tabindex="0"
+    :class="{ 'product-card_isSold': isSold }"
     @click="$emit('open-details', id)"
     @keydown.enter.self="$emit('open-details', id)"
     @keydown.space.self.prevent="$emit('open-details', id)"
@@ -150,6 +151,17 @@ export default Vue.extend({
   border: 1px solid var(--color-border-primary);
   letter-spacing: 2%;
   cursor: pointer;
+  transition: box-shadow var(--transition-base);
+}
+
+.product-card:hover,
+.product-card:focus {
+  cursor: pointer;
+  box-shadow: 0 2px 6px var(--color-shadow);
+}
+
+.product-card_isSold {
+  opacity: 0.5;
 }
 
 .product-card__image {
