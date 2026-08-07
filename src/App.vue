@@ -8,12 +8,7 @@
     />
     <div class="page-content">
       <h1 class="header-page">Картины эпохи Возрождения</h1>
-      <ButtonBase color="accent">
-        <template v-slot:icon>
-          <IconCheck size="20" />
-        </template>
-        В корзине
-      </ButtonBase>
+      <ProductCardList :products="productItems" @toggle-cart="toggleCart" />
     </div>
     <PageFooter
       :navigation-items="navigationItems"
@@ -26,24 +21,29 @@
 
 <script lang="ts">
 import Vue from "vue";
-import ButtonBase from "@/components/atoms/ButtonBase.vue";
-import IconCheck from "@/components/atoms/icons/IconCheck.vue";
-import { navigation } from "@/shared/data";
+import { navigation, products } from "@/shared/data";
+import { CartTogglePayload, Product } from "@/shared/types";
 import PageHeader from "@/components/organisms/PageHeader.vue";
 import PageFooter from "@/components/organisms/PageFooter.vue";
+import ProductCardList from "@/components/organisms/ProductCardList.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
+    ProductCardList,
     PageHeader,
-    IconCheck,
-    ButtonBase,
     PageFooter,
   },
   data() {
     return {
       searchValue: "",
       navigationItems: navigation,
+      productItems: products.map(
+        (product): Product => ({
+          ...product,
+          isInCart: Boolean(product.isInCart),
+        })
+      ),
     };
   },
 
@@ -54,6 +54,13 @@ export default Vue.extend({
 
     handleResetSearch(): void {
       this.searchValue = "";
+    },
+
+    toggleCart({ id }: CartTogglePayload): void {
+      const product = this.productItems.find((item) => item.id === id);
+      if (product) {
+        product.isInCart = !product.isInCart;
+      }
     },
   },
 });
@@ -72,6 +79,7 @@ export default Vue.extend({
 .header-page {
   font: var(--font-h1);
   letter-spacing: var(--letter-spacing-tight);
+  padding-bottom: 39px;
 }
 /*#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

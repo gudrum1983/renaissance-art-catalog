@@ -6,12 +6,13 @@
     :disabled="disabled || isLoader"
     :aria-label="isLoader ? loadingLabel : undefined"
     :aria-busy="isLoader"
+    @click="$emit('click', $event)"
   >
     <span
       class="button-base__content"
       :class="{ 'button-base__content_hidden': isLoader }"
     >
-      <span v-if="hasIconSlot" class="button-base__icon">
+      <span v-if="$slots.icon" class="button-base__icon">
         <slot name="icon" />
       </span>
 
@@ -75,10 +76,6 @@ export default Vue.extend({
         },
       ];
     },
-
-    hasIconSlot(): boolean {
-      return Boolean(this.$slots.icon);
-    },
   },
 });
 </script>
@@ -96,7 +93,7 @@ export default Vue.extend({
   width: fit-content;
   min-width: 118px;
   min-height: 48px;
-  padding: 14px 8px;
+  padding: 12px 8px;
   border: 0;
   font: var(--font-body-bold);
 
