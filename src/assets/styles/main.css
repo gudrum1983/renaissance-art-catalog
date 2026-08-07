@@ -1,0 +1,15 @@
+@import "reset.css";
+@import "fonts.css";
+@import "variables.css";
+@import "utilities.css";
+
+body {
+    min-width: 360px;
+    font: var(--font-body-regular);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-primary) ;
+    font-optical-sizing: auto;
+    font-variant-numeric: oldstyle-nums;
+    min-height: 100vh;
+    letter-spacing: var(--letter-spacing-base);
+}

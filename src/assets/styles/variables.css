@@ -1,0 +1,64 @@
+:root {
+    --font-family-primary: "MerriweatherVariable";
+
+    --font-h1: 700 24px/1.5 var(--font-family-primary);
+    --font-h2: 400 18px/1.5 var(--font-family-primary);
+    --font-h3: 700 16px/1.5 var(--font-family-primary);
+
+    --font-хxl: 700 36px/1 var(--font-family-primary);
+
+    --font-body-regular: 400 14px/1.5 var(--font-family-primary);
+    --font-body-bold: 700 14px/1.5 var(--font-family-primary);
+    --font-body-light: 300 14px/1.5 var(--font-family-primary);
+    --font-body-accent-bold: 700 16px/1.5 var(--font-family-primary);
+
+    --color-text-primary: #343030;
+    --color-text-secondary: #555555;
+    --color-text-muted: #A0A0A0;
+    --color-text-placeholder: #9F9F9F;
+
+    --color-background-primary: #F6F3F3;
+    --color-background-secondary: #ECEAEA;
+    --color-background-overlay: #382E2BB8;
+
+    --color-shadow: #382E2B59;
+
+    --color-border-light: #E7E7E7;
+    --color-border-primary: #E1E1E1;
+    --color-border-secondary: #B5B5B5;
+
+    /*заливка кнопки "нормал" в ui*/
+    --color-button-background-primary-default: #403432;
+    /*заливка кнопки "купить" в макете*/
+    --color-button-background-secondary-default: #382E2B;
+    /*заливка кнопки "найти" в ui*/
+    --color-button-background-accent-default: #5B3A32;
+
+    --color-button-background-primary-hover: #776763;
+    --color-button-background-primary-disabled: #C1B4B1;
+
+    --color-button-text-primary-default: #F4F6F9;
+    --color-button-text-secondary-default: #FFFFFF;
+    --color-button-text-secondary-opacity: #FFFFFF59;
+
+    --color-border-input-default: var(--color-border-primary);
+    --color-border-input-focus: var(--color-border-secondary);
+
+    --transition-base: 350ms ease-in-out;
+
+    --container-max-width: 1308px;
+    --container-padding: 24px;
+
+    --content-padding: 46px;
+    --content-offset-left: 96px;
+
+    --letter-spacing-base: 3%;
+    --letter-spacing-tight: 2.5%;
+    --letter-spacing-wide: 8%;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --container-padding: 16px;
+    }
+}
