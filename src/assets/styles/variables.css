@@ -1,5 +1,5 @@
 :root {
-    --font-family-primary: "Merriweather";
+    --font-family-primary: "MerriweatherVariable";
 
     --font-h1: 700 24px/1.5 var(--font-family-primary);
     --font-h2: 400 18px/1.5 var(--font-family-primary);
@@ -39,8 +39,15 @@
 
     --transition-base: 350ms ease-in-out;
 
-    --container-max-width: 1216px;
+    --container-max-width: 1308px;
     --container-padding: 24px;
+
+    --content-padding: 46px;
+    --content-offset-left: 96px;
+
+    --letter-spacing-base: 3%;
+    --letter-spacing-tight: 2.5%;
+    --letter-spacing-wide: 8%;
 }
 
 @media (max-width: 767px) {

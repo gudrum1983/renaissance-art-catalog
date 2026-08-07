@@ -1,13 +1,16 @@
 <template>
   <header class="page-header">
-    <div class="container page-header__container">
-      <NavigationMenu :items="navigationItems" color="primary" />
+    <div class="container">
+      <div class="page-header__content">
+        <NavigationMenu :items="navigationItems" />
 
-      <SearchForm
-        :applied-value="searchValue"
-        @submit="$emit('search', $event)"
-        @reset="$emit('reset-search')"
-      />
+        <SearchForm
+          :applied-value="searchValue"
+          @submit="$emit('search', $event)"
+          @reset="$emit('reset-search')"
+          placeholder="Поиск по названию картины"
+        />
+      </div>
     </div>
   </header>
 </template>
@@ -47,11 +50,22 @@ export default Vue.extend({
 
 <style scoped>
 .page-header {
+  --header-container-left-padding: calc(
+    var(--content-padding) + var(--content-offset-left)
+  );
+  --header-container-right-padding: var(--content-padding);
+
+  min-height: 97px;
   border-bottom: 1px solid var(--color-border-primary);
+  display: flex;
+  align-items: center;
+  color: var(--color-text-primary);
 }
 
-.page-header__container {
-  padding: 24px 0 24px 96px;
+.page-header__content {
+  width: 100%;
+  padding-left: var(--header-container-left-padding);
+  padding-right: var(--header-container-right-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;

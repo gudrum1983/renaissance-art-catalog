@@ -89,6 +89,7 @@ export default Vue.extend({
   color: var(--color-text-primary);
   border-radius: 0;
   border: 1px solid var(--color-border);
+  letter-spacing: var(--letter-spacing-base);
 }
 .search-input__field::placeholder {
   color: var(--color-placeholder);

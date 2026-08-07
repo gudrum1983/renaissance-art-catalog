@@ -11,5 +11,5 @@ body {
     font-optical-sizing: auto;
     font-variant-numeric: oldstyle-nums;
     min-height: 100vh;
-
+    letter-spacing: var(--letter-spacing-base);
 }

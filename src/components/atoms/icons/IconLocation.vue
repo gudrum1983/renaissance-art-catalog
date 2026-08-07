@@ -1,19 +1,16 @@
 <template>
   <svg
-    class="icon-check"
+    class="icon-location"
     :style="{ color: color || undefined }"
     :width="size"
     :height="size"
-    viewBox="0 0 20 20"
+    viewBox="0 0 16 16"
     fill="none"
     aria-hidden="true"
   >
     <path
-      d="M16.5315 4.80937 7.63341 14.237l-4.28527-4.0446"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      d="M8.07028 1C5.27451 1 3 3.27451 3 6.07025C3 9.53985 7.5374 14.6334 7.73058 14.8486C7.91204 15.0507 8.22884 15.0503 8.40997 14.8486C8.60315 14.6334 13.1406 9.53985 13.1406 6.07025C13.1405 3.27451 10.866 1 8.07028 1ZM8.07028 8.62123C6.66366 8.62123 5.51932 7.47687 5.51932 6.07025C5.51932 4.66363 6.66368 3.51929 8.07028 3.51929C9.47687 3.51929 10.6212 4.66366 10.6212 6.07028C10.6212 7.47689 9.47687 8.62123 8.07028 8.62123Z"
+      fill="currentColor"
     />
   </svg>
 </template>
@@ -24,7 +21,7 @@ import Vue, { PropType } from "vue";
 type IconSize = number | string;
 
 export default Vue.extend({
-  name: "IconCheck",
+  name: "IconLocation",
 
   props: {
     /** Размер иконки. Числовое значение интерпретируется как px. */
