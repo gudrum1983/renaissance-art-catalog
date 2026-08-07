@@ -3,12 +3,7 @@
     <img class="product-card__image" :src="image" :alt="title" />
 
     <div class="product-card__bottom-block">
-      <div
-        class="product-card__description"
-        :class="{
-          'product-card__description_isSold': isSold || isInCart,
-        }"
-      >
+      <div class="product-card__description">
         <p>{{ title }}</p>
         <p>{{ subtitle }}</p>
       </div>
@@ -23,11 +18,24 @@
           </div>
           <div class="product-card__price">{{ price }}</div>
         </div>
-        <ButtonBase color="accent" @click="handleButtonClick">
-          <template v-if="isInCart" v-slot:icon>
+        <ButtonBase
+          v-if="isInCart"
+          color="accent"
+          :is-loader="isLoading"
+          @click="handleButtonClick"
+        >
+          <template v-slot:icon>
             <IconCheck size="20" />
           </template>
-          {{ isInCart ? "В корзине" : "Купить" }}
+          В корзине
+        </ButtonBase>
+        <ButtonBase
+          v-else
+          color="secondary"
+          :is-loader="isLoading"
+          @click="handleButtonClick"
+        >
+          Купить
         </ButtonBase>
       </div>
     </div>
@@ -38,13 +46,19 @@
 import Vue, { PropType } from "vue";
 import ButtonBase from "@/components/atoms/ButtonBase.vue";
 import IconCheck from "@/components/atoms/icons/IconCheck.vue";
-
-type ProductId = string | number;
+import { ProductId } from "@/shared/types";
 
 export default Vue.extend({
   name: "ProductCard",
 
   components: { IconCheck, ButtonBase },
+
+  data() {
+    return {
+      isLoading: false,
+      toggleTimerId: null as number | null,
+    };
+  },
 
   props: {
     id: {
@@ -69,7 +83,7 @@ export default Vue.extend({
 
     price: {
       type: String,
-      required: true,
+      default: "",
     },
 
     oldPrice: {
@@ -100,11 +114,26 @@ export default Vue.extend({
 
   methods: {
     handleButtonClick(): void {
-      this.$emit("toggle-cart", {
-        id: this.id,
-        isInCart: this.isInCart,
-      });
+      if (this.isLoading) return;
+
+      this.isLoading = true;
+
+      this.toggleTimerId = window.setTimeout(() => {
+        this.$emit("toggle-cart", {
+          id: this.id,
+          isInCart: this.isInCart,
+        });
+
+        this.isLoading = false;
+        this.toggleTimerId = null;
+      }, 2000);
     },
+  },
+
+  beforeDestroy(): void {
+    if (this.toggleTimerId !== null) {
+      window.clearTimeout(this.toggleTimerId);
+    }
   },
 });
 </script>
@@ -130,9 +159,6 @@ export default Vue.extend({
 .product-card__description {
   font: var(--font-h2);
   margin-bottom: 22px;
-}
-.product-card__description_isSold {
-  letter-spacing: 0;
 }
 
 .product-card__action {
