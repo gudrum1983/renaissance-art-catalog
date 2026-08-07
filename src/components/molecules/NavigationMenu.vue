@@ -1,9 +1,5 @@
 <template>
-  <nav
-    class="navigation-menu"
-    :style="{ color: color || undefined }"
-    aria-label="Основная навигация"
-  >
+  <nav class="navigation-menu" aria-label="Основная навигация">
     <ul class="navigation-menu__list">
       <li v-for="item in items" :key="item.id" class="navigation-menu__item">
         <a class="navigation-menu__link" :href="item.href">
@@ -39,22 +35,8 @@ export default Vue.extend({
 
 <style scoped>
 .navigation-menu {
-  --color-link: inherit;
-
   font: var(--font-body-regular);
-  color: var(--color-link);
-}
-
-.navigation-menu_color_default {
-  --color-link: inherit;
-}
-
-.navigation-menu_color_primary {
-  --color-link: var(--color-text-primary);
-}
-
-.navigation-menu_color_secondary {
-  --color-link: var(--color-text-secondary);
+  color: inherit;
 }
 
 .navigation-menu__list {
@@ -62,7 +44,7 @@ export default Vue.extend({
   align-items: center;
   justify-content: space-between;
   width: fit-content;
-  gap: 24px;
+  gap: 48px;
 }
 
 .navigation-menu__link {
@@ -75,7 +57,7 @@ export default Vue.extend({
   content: "";
   position: absolute;
   right: 0;
-  bottom: 1px;
+  bottom: -2px;
   left: 0;
 
   height: 1px;
