@@ -45,13 +45,13 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-primary);
+  color: var(--color-button-background-primary-default);
   background: inherit;
   cursor: pointer;
   transition: all var(--transition-base);
 }
 .close-button:hover {
-  color: var(--color-text-secondary);
+  color: var(--color-button-background-primary-hover);
   transform: rotate(90deg);
 }
 </style>
