@@ -32,10 +32,24 @@
 import Vue from "vue";
 import { navigation, products } from "@/shared/data";
 import { CartTogglePayload, Product, ProductId } from "@/shared/types";
+import { loadCartProductIds, saveCartProductIds } from "@/shared/cartStorage";
 import PageHeader from "@/components/organisms/PageHeader.vue";
 import PageFooter from "@/components/organisms/PageFooter.vue";
 import ProductCardList from "@/components/organisms/ProductCardList.vue";
 import ProductDetailsModal from "@/components/organisms/ProductDetailsModal.vue";
+
+const createProductItems = (): Array<Product> => {
+  const storedProductIds = loadCartProductIds();
+
+  return products.map(
+    (product): Product => ({
+      ...product,
+      isInCart: storedProductIds
+        ? storedProductIds.includes(product.id)
+        : Boolean(product.isInCart),
+    })
+  );
+};
 
 export default Vue.extend({
   name: "App",
@@ -50,12 +64,7 @@ export default Vue.extend({
       searchValue: "",
       navigationItems: navigation,
       selectedProduct: null as Product | null,
-      productItems: products.map(
-        (product): Product => ({
-          ...product,
-          isInCart: Boolean(product.isInCart),
-        })
-      ),
+      productItems: createProductItems(),
     };
   },
 
@@ -72,6 +81,12 @@ export default Vue.extend({
       const product = this.productItems.find((item) => item.id === id);
       if (product) {
         product.isInCart = !product.isInCart;
+
+        saveCartProductIds(
+          this.productItems
+            .filter((item) => item.isInCart)
+            .map((item) => item.id)
+        );
       }
     },
 
@@ -98,12 +113,4 @@ export default Vue.extend({
   letter-spacing: var(--letter-spacing-tight);
   padding-bottom: 39px;
 }
-/*#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}*/
 </style>
